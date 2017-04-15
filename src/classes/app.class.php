@@ -22,7 +22,7 @@ class APP {
   }
   
   public function _cleanAlphaSpace($data, $length = FALSE) {
-    $regexp = (!$length) ? '/^[a-zA-Z/s]+$/' : '/^[a-zA-Z/s]{' . $length . '}+$/';
+    $regexp = (!$length) ? '/^[a-zA-Z\s]+$/' : '/^[a-zA-Z/s]{' . $length . '}+$/';
     return filter_var($data, FILTER_VALIDATE_REGEXP, array('options'=>array('regexp' => $regexp)));
   }
   
@@ -31,8 +31,8 @@ class APP {
     return filter_var($data, FILTER_VALIDATE_REGEXP, array('options'=>array('regexp' => $regexp)));
   }
 
-  public function _cleanPassword($data, $length == FALSE){
-    $regexp = (!$length) ? '/^(?=.*[A-Za-z])(?=.*/d)[A-Za-z/d]{8,}$/' : '/^(?=.*[A-Za-z])(?=.*/d)[A-Za-z/d]{8,' . $length . '}$}/';
+  public function _cleanPassword($data, $length = FALSE){
+    $regexp = (!$length) ? '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/' : '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,' . $length . '}$}/';
     return filter_var($data, FILTER_VALIDATE_REGEXP, array('options'=>array('regexp' => $regexp))); 
   }
   
@@ -56,5 +56,30 @@ class APP {
     else 
       $ip = $_SERVER['REMOTE_ADDR'];
     return $ip;
+  }
+
+  public function genToken($length =FALSE){
+
+    if (!$length) $length = 25;
+    $token = "";
+    $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    $max = strlen($codeAlphabet);
+    for ($i=0; $i < $length; $i++) {
+        $token .= $codeAlphabet[$this->crypto_rand_secure(0, $max-1)];
+    }
+    return $token;
+  }
+  public function crypto_rand_secure( $min, $max ) {
+    $range = $max - $min;
+    if ( $range < 0 ) return $min; // not so random...
+    $log    = log( $range, 2 );
+    $bytes  = (int) ( $log / 8 ) + 1; // length in bytes
+    $bits   = (int) $log + 1; // length in bits
+    $filter = (int) ( 1 << $bits ) - 1; // set all lower bits to 1
+    do {
+      $rnd = hexdec( bin2hex( openssl_random_pseudo_bytes( $bytes ) ) );
+      $rnd = $rnd & $filter; // discard irrelevant bits
+    } while ( $rnd >= $range );
+    return $min + $rnd;
   }
 }

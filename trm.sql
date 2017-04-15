@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 15, 2017 at 11:53 AM
+-- Generation Time: Apr 15, 2017 at 06:13 PM
 -- Server version: 5.7.17-log
 -- PHP Version: 7.1.2
 
@@ -47,7 +47,7 @@ CREATE TABLE `email` (
   `status` tinyint(4) NOT NULL COMMENT '0 -> Unread, 1-> Read, 2->Archived, 3->Deleted, 4->Draft',
   `senderip` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE `email` (
 
 CREATE TABLE `token` (
   `user_id` int(11) NOT NULL,
-  `token` int(11) NOT NULL,
+  `token` varchar(25) NOT NULL,
   `type` int(11) NOT NULL COMMENT '0-> Verification, 1-> Password Reset',
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -80,7 +80,7 @@ CREATE TABLE `user` (
   `country` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '0 -> Unverified, 1-> Verified, 2-> Banned',
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation Time'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Indexes for dumped tables
@@ -102,7 +102,9 @@ ALTER TABLE `email`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -112,12 +114,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `email`
 --
 ALTER TABLE `email`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
