@@ -12,7 +12,7 @@ class registerHelper{
 		$country = $this->app->_cleanAlphaSpace($country);
 		$password = crypt($password,password_hash($password, PASSWORD_BCRYPT));
 		if ($username && $password && $fname && $lname && $birthdate && $gender && $email && $country){
-		
+			
 			return true;	
 		}
 		return false;
