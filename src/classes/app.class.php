@@ -59,7 +59,6 @@ class APP {
   }
 
   public function genToken($length =FALSE){
-
     if (!$length) $length = 25;
     $token = "";
     $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
