@@ -17,15 +17,17 @@
 		isset($_POST['country'])){
 		$res = (new registerHelper($db))->register($_POST['uname'], $_POST['pass'], $_POST['fname'], $_POST['lname'], $_POST['dob'], $_POST['gender'], $_POST['email'], $_POST['country']);
 		switch ($res) {
-			case '1': $message = "Successfully Registered! Please Login"; break;
-			case '0': $message = "Some Error Has Occured. Please Try Again"; break;
-			case '-1': $message = "Username or Email already exists."; break;
+			case '1': $message = "Successfully Registered! Please Login."; break;
+			case '0': $message = "Registration Unsuccessful. Please Try Again."; break;
+			case '-1': $message = "Username already exists."; break;
+			case '-2': $message = "Form not complete."; break;
+			case '-3': $message = "Some Error Has Occured. Please Try Again Later."; break;
 		}
 	}
 ?>
 
 <body class="signup-page">
-	<div class="page-header header-filter" filter-color="purple" style="background-image: url('../assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+	<div class="page-header header-filter" filter-color="purple" style="background-image: url('static/img/bg7.jpg'); background-size: cover; background-position: top center;">
     	<div class="container">
 			<div class="row">
     			<div class="col-md-10 col-md-offset-1">
