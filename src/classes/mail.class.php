@@ -37,6 +37,7 @@ class Mail{
 		  CURLOPT_TIMEOUT => 30,
 		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		  CURLOPT_CUSTOMREQUEST => "POST",
+  		  CURLOPT_CAINFO => 'cacert.pem',
 		  CURLOPT_POSTFIELDS => json_encode($message),
 		  CURLOPT_HTTPHEADER => array(
 		    "authorization: Bearer ".MAIL_API_KEY,
