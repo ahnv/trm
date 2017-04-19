@@ -11,7 +11,7 @@ class mailHelper
 		$query=$this->db->prepare("select user_id from user where email=?"); //Email should be verified regardless of Upper/Lower case
 		$query->execute(array($email));
 		$rows=$query->fetchAll(PDO::FETCH_ASSOC);
-		if(count($rows>0)) //correct syntax?
+		if(count($rows0)) //correct syntax?
 		{
 			return $rows[0]['user_id'];
 		}
