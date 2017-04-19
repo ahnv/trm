@@ -64,4 +64,23 @@ class registerHelper{
 		}
 		return -2;
 	}
+	/*
+	*	RegisterHelper->verifyRegistration	
+	*	@param Userid Token
+	*/
+	public function verifyRegistration($userid,$token){
+		$token = $this->app->_cleanAlphaNumeric($token,25);
+		try{
+			$query = $this->db->prepare("SELECT `user_id` FROM `token` WHERE `user_id` = ? AND `token` = ? AND `type` = '0'");
+			$query->execute(array($userid,$token));
+			$rows = $query->fetch(PDO::FETCH_ASSOC);
+			if (isset($rows['user_id'])){
+				$query = $this->db->prepare("UPDATE `user` SET `status` = '1' WHERE `user`.`user_id` = ?;");
+				$query->execute(array($userid));
+				$_SESSION['status'] = 1;
+			}
+		}catch(PDOException $e){
+			SysLog::send($e);
+		}
+	}
 }

@@ -42,4 +42,20 @@ class LoginHelper{
 		}
 		return -2;
 	}
+
+	/*
+	*	LoginHelper->getCurrentStatus	
+	*	@param uid
+	*/
+
+	public function getCurrentStatus($uid){
+		$query = $this->db->prepare("SELECT `status` FROM `user` WHERE `user_id` = ?");
+		$query->execute(array($uid));
+		$rows = $query->fetch(PDO::FETCH_ASSOC);
+		if (isset($rows['status'])){
+			$_SESSION['status'] = $rows['status'];
+		}
+		return true;
+	}
+
 }

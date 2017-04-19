@@ -62,9 +62,9 @@
 											<input required type="text" name="lname" class="form-control">
 											<span class="material-input"></span>
 										</div>
-										<div class="form-group label-floating is-empty">
+										<div class="form-group label-static">
 											<label class="control-label">Date Of Birth</label>
-											<input required type="text" name="dob" class="datepicker form-control"  />
+											<input type="text" name="dob" class="datepicker form-control"  />
 										</div>
 										<div class="form-group label-static">
 											<label class="control-label">Gender</label>
