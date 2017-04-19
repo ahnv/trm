@@ -13,7 +13,7 @@ class DB{
       $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       return $db;
     }catch(PDOException $e){
-      SysLog::send($e,LOG_ERR);
+      SysLog::send($e);
     }
   }  
 }
