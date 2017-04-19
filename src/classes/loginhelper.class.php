@@ -1,10 +1,8 @@
 <?php
-
 /*
 *	LoginHelper
 *	Contains all functions related to login
 */
-
 class LoginHelper{
 	private $db, $app;
 	public function __construct($db){ $this->db=$db; $this->app = new APP(); }
