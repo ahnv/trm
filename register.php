@@ -19,7 +19,7 @@
 		switch ($res) {
 			case '1': $message = "Successfully Registered! Please Login."; break;
 			case '0': $message = "Registration Unsuccessful. Please Try Again."; break;
-			case '-1': $message = "Username already exists."; break;
+			case '-1': $message = "Username or email already exists."; break;
 			case '-2': $message = "Form not complete."; break;
 			case '-3': $message = "Some Error Has Occured. Please Try Again Later."; break;
 		}

@@ -25,7 +25,6 @@
             <div class="row">
 				<div class="col-md-6">
 					<h1 class="title">The Right Mail.</h1>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h4>
                     <br />
                     <a href="login" class="btn btn-success btn-raised btn-lg">
 						Sign In 
@@ -36,68 +35,12 @@
 				</div>
             </div>
         </div>
-    </div>
-
-	<div class="main main-raised">
-		<div class="container">
-	       	<div class="section text-center">
-                <h2 class="title">Here is our team</h2>
-
-				<div class="team">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="card card-profile card-plain">
-								<div class="col-md-5">
-									<div class="card-image">
-										<a href="#pablo">
-											<img class="img" src="../assets/img/faces/card-profile1-square.jpg" />
-										</a>
-									</div>
-								</div>
-								<div class="col-md-7">
-									<div class="content">
-										<h4 class="card-title">Alec Thompson</h4>
-
-										<p class="card-description">
-											Don't be scared of the truth because we need to restart the human foundation in truth...
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-6">
-							<div class="card card-profile card-plain">
-								<div class="col-md-5">
-									<div class="card-image">
-										<a href="#pablo">
-											<img class="img" src="../assets/img/faces/card-profile6-square.jpg" />
-										</a>
-									</div>
-								</div>
-								<div class="col-md-7">
-									<div class="content">
-										<h4 class="card-title">Kendall Andrew</h4>
-
-										<p class="card-description">
-											Don't be scared of the truth because we need to restart the human foundation in truth...
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-            </div>
-        </div>
-	</div>
-    <footer class="footer">
-        <div class="container">
+        <div class="container" style="position: fixed; bottom: 20px; right: 10px">
             <div class="copyright pull-right">
-                &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i>
+                &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Abhinav Dhiman
             </div>
         </div>
-    </footer>
+    </div>
 
 <?php 
 	require __DIR__."/footer.php";
